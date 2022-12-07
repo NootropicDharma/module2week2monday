@@ -21,13 +21,16 @@ require("./config")(app);
 
 // default value for title local
 const capitalize = require("./utils/capitalize");
-const projectName = "library-project";
+const projectName = "Pepino";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
+
+const booksRoutes = require("./routes/book.routes");
+app.use("/books", booksRoutes)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 
@@ -36,6 +39,6 @@ require("./error-handling")(app);
 
 
 
-//01:03:10
+
 
 module.exports = app;

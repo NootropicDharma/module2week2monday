@@ -13,12 +13,31 @@ router.get("/", (req, res, next)=>{
     
 })
 
+//a get to show form to register a new book
+router.get("/create", (req, res, next)=>{
+    res.render("create-book")
+})
+
+router.post("/create", (req, res, next)=>{
+    console.log("this is the info",req.body)
+
+    Book.create(req.body) //OR Book.create({...req.body}) dylan way and this other way is Harland
+    .then(data=> {
+        // res.render("successful", data) 
+        res.redirect("/books")
+    })
+    .catch(err=>{console.log(err)})
+   
+})
+
+
 
 //to find it by params , you can always console.log(req.params to find the info) /:id 
 
 router.get("/:id", (req, res, next)=>{
 
    //const {id} = req.params 
+   //basically const id = req.params.id  same thing as above 
    //Book.findById(id)   another way to do it 
 
     Book.findById(req.params.id) 
@@ -30,7 +49,7 @@ router.get("/:id", (req, res, next)=>{
 
 })
 
-//39:34 we are going to be creating books tomorrow 
+
 
 
 

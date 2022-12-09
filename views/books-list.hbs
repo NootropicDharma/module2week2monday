@@ -4,7 +4,15 @@
 {{!-- i put limon because i named it that in the routes  --}}
     <div>
         <ul> 
-            <li>{{title}}<button><a href="books/{{_id}}">{{_id}}</a></button></li>
+            <li>{{title}}
+                <button>
+                    <a href="books/{{_id}}">{{_id}}</a>
+                </button>
+                    <button><a href="books/{{_id}}/edit">Edit</a></button>
+            </li>
         </ul>
+        <form action="/books/{{_id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
     </div>
 {{/each}}   
